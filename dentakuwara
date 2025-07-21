@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ニセ電卓</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e9f5e9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background-color: #d4f1d4;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    #display {
+      width: 100%;
+      font-size: 2rem;
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: right;
+      border: none;
+      border-radius: 10px;
+      background-color: #f6fff6;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #a8d5a2;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #91c491;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="buttons">
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button onclick="append('/')">÷</button>
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button onclick="append('*')">×</button>
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button onclick="append('-')">-</button>
+      <button onclick="append('0')">0</button>
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="append('+')">+</button>
+    </div>
+  </div>
+
+  <script>
+    let input = '';
+
+    function append(value) {
+      input += value;
+      document.getElementById('display').value = input;
+    }
+
+    function clearDisplay() {
+      input = '';
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      // 入力を無視してランダムな値を出力
+      const randomResult = Math.floor(Math.random() * 99990000) + 1;
+      document.getElementById('display').value = randomResult;
+      input = '';
+    }
+  </script>
+</body>
+</html>
